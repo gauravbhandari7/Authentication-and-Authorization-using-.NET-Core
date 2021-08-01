@@ -1,0 +1,45 @@
+﻿@model Flight
+
+<form method="post">
+    <input asp-for="Id" hidden />
+    <h3>Edit booking</h3>
+    <br />
+    <div class="border form-group container-fluid">
+        <div class="row">
+            <div class="col-2">
+                <label asp-for="Airline"></label>
+            </div>
+            <div class="col-6">
+                <input class="form-control" asp-for="Airline" />
+                <span class="text-danger" asp-validation-for="Airline"></span>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-2">
+                <label asp-for="Time"></label>
+            </div>
+            <div class="col-6">
+                <input class="form-control" asp-for="Time" />
+                <span class="text-danger" asp-validation-for="Time"></span>
+            </div>
+            <br />
+            <br />
+            <br />
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-edit"></i>Update</button>
+            </div>
+            <div class="col-6">
+                <a class="btn btn-success btn-block" asp-action="Index">Back</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Flight>
+
+@if(ViewBag.Message != null)
+{
+    <script type="text/javascript">
+        window.onload = function ()
+        {
+            alert("@ViewBag.Message");
+        }
+    </script>
+}
+<a asp-action="Create" class="btn btn-primary"><i class="fas fa-plus"></i>&nbsp;&nbsp;Create new booking</a>
+<br />
+<br />
+@if(Model.Count() > 0)
+{
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Airline</th>
+            <th>Time</th>
+            <th>Actions</th>
+        </tr>
+        @foreach(var obj in Model)
+        {
+            <tr>
+                <td>@obj.Airline</td>
+                <td>@obj.Time</td>
+                <td class="text-white">
+                    <a asp-action="Edit" asp-route-Id="@obj.Id" class="btn btn-success"><i class="fas fa-edit"></i></a>
+                    <a asp-action="Delete" asp-route-Id="@obj.Id" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p>No bookings found.</p>
+}
